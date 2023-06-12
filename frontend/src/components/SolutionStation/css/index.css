@@ -1,0 +1,10 @@
+.stack-index {
+  display: flex;
+  min-height: 90vh;
+  min-width: fit-content;
+}
+.stack-index-content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
