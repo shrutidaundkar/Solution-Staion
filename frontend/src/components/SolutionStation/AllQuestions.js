@@ -16,7 +16,9 @@ function AllQuestions() {
           </div>
         </div>
         <div className="all-questions-bottom">
-          <Link>Is GitHub's dependency graph user customizable?</Link>
+          <Link to={"/view-question"}>
+            Is GitHub's dependency graph user customizable?
+          </Link>
           <div className="question-desc">
             I use degit to pull data partially from a monorepo. As the repo is
             not described in package.json it doesn't show up in dependency

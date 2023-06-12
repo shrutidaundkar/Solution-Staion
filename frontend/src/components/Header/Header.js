@@ -4,12 +4,15 @@ import SearchIcon from "@mui/icons-material/Search";
 import InboxIcon from "@mui/icons-material/Inbox";
 import CodeIcon from "@mui/icons-material/Code";
 import { Avatar } from "@mui/material";
+import { Link } from "react-router-dom";
 function Header() {
   return (
     <header>
       <div className="header-container">
         <div className="header-left">
-          <CodeIcon /> <h3>Solution Station</h3>
+          <Link to={"/"}>
+            <CodeIcon /> <span>Solution Station</span>
+          </Link>
         </div>
         <div className="header-middle">
           <div className="header-search-container">

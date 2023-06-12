@@ -22,16 +22,28 @@ header {
   align-items: center;
   margin-top: 0 10px;
   padding: 10px;
+  min-width: 80px;
 }
-.header-left > h3 {
+.header-left > a {
   font-size: larger;
   font-weight: bold;
-  margin: 0px 5px;
-  padding: 0 10px;
+  text-decoration: none;
+  align-items: center;
+}
+.header-left > a > .MuiSvgIcon-root {
+  color: black;
+  width: 20px;
+  height: 20px;
+}
+.header-left > a > span {
+  font-size: larger;
+  align-items: center;
+  text-decoration: none;
+  color: black;
 }
 .header-left:hover {
-  font-weight: bolder;
-  background-color: gray;
+  background-color: rgb(185, 184, 184);
+  border-radius: 3px;
 }
 .header-middle {
   display: flex;

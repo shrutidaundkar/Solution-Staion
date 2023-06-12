@@ -9,12 +9,12 @@ function Main() {
       <div className="main-container">
         <div className="main-top">
           <h2> All Questions</h2>
-          <Link>
+          <Link to={"/add-question"}>
             <button>Ask a Question</button>
           </Link>
         </div>
         <div className="main-desc">
-          <h3>Questions: 10</h3>
+          <h3>Questions: 3</h3>
           <div className="main-filter">
             <div className="main-tabs">
               <div className="main-tab">
