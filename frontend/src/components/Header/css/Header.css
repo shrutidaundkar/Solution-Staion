@@ -96,3 +96,14 @@ header {
   cursor: pointer;
   margin: 0 10px;
 }
+.header-right-container > button {
+  padding: 5px;
+  font-size: medium;
+  background-color: rgb(228, 45, 45);
+  border: none;
+  border-radius: 2px;
+  color: white;
+  font-size: medium;
+  font-weight: bold;
+  margin-left: 10px;
+}

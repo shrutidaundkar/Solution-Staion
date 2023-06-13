@@ -1,11 +1,21 @@
 import React from "react";
 import "./css/Header.css";
 import SearchIcon from "@mui/icons-material/Search";
-import InboxIcon from "@mui/icons-material/Inbox";
 import CodeIcon from "@mui/icons-material/Code";
 import { Avatar } from "@mui/material";
 import { Link } from "react-router-dom";
+import { UserAuth } from "../context/AuthContext";
+
 function Header() {
+  const { user, googleSignOut } = UserAuth();
+  const handleSignout = () => {
+    try {
+      googleSignOut();
+      console.log(user);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <header>
       <div className="header-container">
@@ -22,8 +32,13 @@ function Header() {
         </div>
         <div className="header-right">
           <div className="header-right-container">
-            <Avatar sizes={"1px"} />
-            <InboxIcon />
+            <Avatar src={user?.photoURL} />
+            {user?.email || ""}
+            {user ? (
+              <button onClick={handleSignout}> Sign Out</button>
+            ) : (
+              <Link to={"/auth"}>Signin</Link>
+            )}
           </div>
         </div>
       </div>
