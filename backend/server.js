@@ -7,8 +7,9 @@ const path = require("path");
 const { default: mongoose } = require("mongoose");
 const routes = require("./routes");
 // Docker mongo connect---------------------------
+//    mongodb://myuser:mypass@mongo:27017/solution-station-db
 mongoose
-  .connect("mongodb://myuser:mypass@mongo:27017/solution-station-db", {
+  .connect("mongodb://mongo:27017/solution-station-db", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
