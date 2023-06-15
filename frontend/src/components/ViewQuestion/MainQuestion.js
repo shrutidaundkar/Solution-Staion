@@ -19,7 +19,9 @@ function MainQuestion() {
   const queParam = new URLSearchParams(search);
   const qid = queParam.get("qid");
   const { user, getMongoIdFromStorage } = UserAuth();
-  const [showAddAnsComments, setShowAddAnsComments] = useState(false);
+  const [showAnswers, setShowAnswers] = useState(true);
+  const [owner, setOwner] = useState("");
+  const [questionStat, setQuestionStat] = useState("");
   const handleQuill = (value) => {
     setAnsDesc(value);
   };
@@ -41,6 +43,8 @@ function MainQuestion() {
         console.log(res.data[0]);
         setCurQuestion(res.data[0]);
         getUserEmail(res.data[0].user_id);
+        setOwner(res.data[0].user_id);
+        setQuestionStat(res.data[0].status);
       })
       .catch((err) => {
         console.log(err);
@@ -68,8 +72,28 @@ function MainQuestion() {
     };
     postAnswerToApi();
   };
+  const checkIfOwner = () => {
+    if (owner === getMongoIdFromStorage()) {
+      // setShowAnswers(true);
+      return true;
+    } else if (questionStat === "CLOSED") {
+      // setShowAnswers(true);
+      return true;
+    } else {
+      // setShowAnswers(false);
+      return false;
+    }
+  };
+  const checkCanClose = () => {
+    if (owner === getMongoIdFromStorage()) {
+      return true;
+    }
+    return false;
+  };
+  const closeQuestion = () => {};
   useEffect(() => {
     getQuestion();
+    checkIfOwner();
   }, []);
   useEffect(() => {}, [curQuestion]);
   return (
@@ -91,6 +115,19 @@ function MainQuestion() {
                   {curQuestion.answerDetails.length || 0} Answers{" "}
                 </span>
                 <span className="question-info"> 0 Views</span>
+                {checkCanClose() === true ? (
+                  <span className="question-info">
+                    <button
+                      onClick={closeQuestion}
+                      style={{
+                        backgroundColor: "red",
+                        padding: "5px",
+                      }}
+                    >
+                      Close Open Forum!
+                    </button>
+                  </span>
+                ) : null}
               </div>
               <div className="question-details">
                 <div className="question-left">
@@ -177,9 +214,13 @@ function MainQuestion() {
               <div>
                 {curQuestion.answerDetails.length > 0 && (
                   <>
-                    {curQuestion.answerDetails.map((ans) => {
-                      return <Answer answerDet={ans} />;
-                    })}
+                    {checkIfOwner() === true ? (
+                      curQuestion.answerDetails.map((ans) => {
+                        return <Answer answerDet={ans} />;
+                      })
+                    ) : (
+                      <>Answer has not been closed yet!</>
+                    )}
                   </>
                 )}
               </div>
