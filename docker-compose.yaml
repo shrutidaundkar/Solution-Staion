@@ -5,6 +5,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: myuser
       MONGO_INITDB_ROOT_PASSWORD: mypass
+      MONGO_INITDB_DATABASE: solution-station-db
     volumes:
       - data:/data/db
     ports:

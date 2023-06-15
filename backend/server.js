@@ -7,27 +7,26 @@ const path = require("path");
 const { default: mongoose } = require("mongoose");
 const routes = require("./routes");
 // Docker mongo connect---------------------------
-// const uri = "mongodb://mongo:27017/mongodb";
-// mongoose
-//   .connect(`mongodb://mongodb:27017/solution-station-db`, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//   })
-//   .then((res) => {
-//     console.log("mongo connected");
-//   })
-//   .catch((err) => console.log(err));
+mongoose
+  .connect("mongodb://myuser:mypass@mongo:27017/solution-station-db", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then((res) => {
+    console.log("mongo connected");
+  })
+  .catch((err) => console.log(err));
 
 // Mongo Cluster---------------------------
-const uri =
-  "mongodb+srv://shrutidaundkar:<MongoPassHere>@cluster0.adpyrrk.mongodb.net/solution-station-db?retryWrites=true&w=majority";
-connect = () => {
-  mongoose
-    .connect(uri)
-    .then((res) => console.log("Mongo connected"))
-    .catch((err) => console.log(err));
-};
-connect();
+// const uri =
+//   "mongodb+srv://shrutidaundkar:<MongoPassHere>@cluster0.adpyrrk.mongodb.net/solution-station-db?retryWrites=true&w=majority";
+// connect = () => {
+//   mongoose
+//     .connect(uri)
+//     .then((res) => console.log("Mongo connected"))
+//     .catch((err) => console.log(err));
+// };
+// connect();
 
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
