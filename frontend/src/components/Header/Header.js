@@ -34,7 +34,7 @@ function Header() {
           <div className="header-right-container">
             <Avatar src={user?.photoURL} />
             {user?.email || ""}
-            {user ? (
+            {user !== undefined ? (
               <button onClick={handleSignout}> Sign Out</button>
             ) : (
               <Link to={"/auth"}>Signin</Link>

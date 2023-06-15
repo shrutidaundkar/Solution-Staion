@@ -21,6 +21,8 @@
 .all-questions-bottom > a {
   color: rgb(0, 139, 253);
   text-decoration: underline;
+  /* padding: 2px; */
+  margin-bottom: 15px;
 }
 .all-questions-bottom > a:visited,
 a:active {
@@ -28,6 +30,9 @@ a:active {
 }
 .question-desc {
   width: 90%;
+  max-height: 150px;
+  overflow-y: hidden;
+  margin-bottom: 10px;
 }
 .question-tags {
   display: flex;
